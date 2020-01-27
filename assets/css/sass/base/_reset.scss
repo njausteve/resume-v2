@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+
+  &.w-mod-touch * {
+    background-attachment: scroll !important;
+  }
+}
+
+body {
+  font-family: "Gothic A1", sans-serif;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  min-height: 100%;
+  background-color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin-top: 0px;
+  font-size: 52px;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+h2 {
+  margin-top: 0px;
+  font-size: 36px;
+  line-height: 1.25;
+  font-weight: 900;
+}
+
+h3 {
+  margin-top: 0px;
+  font-size: 23px;
+  line-height: 1.35;
+  font-weight: 900;
+}
+
+h4 {
+  margin-top: 0px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 900;
+}
+
+h5 {
+  margin-top: 0px;
+  font-size: 14px;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+h6 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+p {
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+a {
+  color: #ff5733;
+  text-decoration: none;
+}
+
+ol {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  padding-left: 40px;
+  list-style-type: decimal;
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
+}
+
+blockquote {
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  border-left: 5px solid #e2e2e2;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+figure {
+  margin-bottom: 10px;
+}
+
+figcaption {
+  margin-top: 5px;
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  display: inline-block;
+}
