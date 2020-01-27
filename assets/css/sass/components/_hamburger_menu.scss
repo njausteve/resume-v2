@@ -1,0 +1,101 @@
+.hamburger-menu {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  margin: auto;
+  padding-top: 5px;
+  border: 5px solid transparent;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    .bar {
+      &:nth-of-type(1) {
+        @include transform(translateY(1px) rotate(45deg));
+      }
+
+      &:nth-of-type(2) {
+        opacity: 0;
+      }
+
+      &:nth-of-type(3) {
+        @include transform(translateY(-15px) rotate(-45deg));
+      }
+    }
+  }
+
+  .bar {
+    &:nth-of-type(1) {
+      animation-delay:0s;
+      animation-direction: normal;
+      animation-duration: 1.5s;
+      animation-fill-mode: none;
+      animation-iteration-count: 1;
+      animation-name: rotateR;
+      animation-play-state: running;
+      animation-timing-function: cubic-bezier(0.5, 0.2, 0.2, 1);
+    }
+
+    &:nth-of-type(2) {
+      animation-delay: 0s;
+      animation-direction: normal;
+      animation-duration: 1.5s;
+      animation-fill-mode: none;
+      animation-iteration-count: 1;
+      animation-name: fade;
+      animation-play-state: running;
+      animation-timing-function: cubic-bezier(0.1, 0.8, 0.1, 1);
+
+    }
+
+    &:nth-of-type(3) {
+      animation-delay: 0s;
+      animation-direction: normal;
+      animation-duration: 1.5s;
+      animation-fill-mode: none;
+      animation-iteration-count: 1;
+      animation-name: rotateL;
+      animation-play-state: running;
+      animation-timing-function: cubic-bezier(0.5, 0.2, 0.2, 1);
+    }
+  }
+}
+
+.bar {
+  height: 3px;
+  width: 30px;
+  display: block;
+  margin: 5px auto;
+  position: relative;
+  background-color: $color_8;
+  border-radius: 10px;
+  transition: 0.4s;
+}
+
+/*============= Animation  ================*/
+@include keyframes(rotateR) {
+  from {
+    @include transform(translateY(0px) rotate(0));
+  }
+  to {
+    @include transform(translateY(15px) rotate(45deg));
+  }
+}
+
+@include keyframes(rotateL) {
+  from {
+    @include transform(translateY(0px) rotate(0));
+  }
+  to {
+    @include transform(translateY(-15px) rotate(-45deg));
+  }
+}
+
+@include keyframes(fade) {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
