@@ -22,7 +22,8 @@
     "express": "^4.16.4",
     "node-sass": "^4.13.0",
     "nuxt": "^2.0.0",
-    "sass-loader": "^8.0.0"
+    "sass-loader": "^8.0.0",
+    "semantic-release": "^16.0.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
@@ -39,7 +40,6 @@
     "nodemon": "^1.18.9",
     "postcss-ordered-values": "^4.1.2",
     "postcss-pxtorem": "^4.0.1",
-    "semantic-release": "^16.0.4",
     "vue-jest": "^4.0.0-0"
   },
   "repository": {
