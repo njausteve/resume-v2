@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  test:
     docker:
       - image: "circleci/node:12.6.0"
     steps:
@@ -8,15 +8,34 @@ jobs:
       - restore_cache:
           key: yarn-cache-{{ checksum "yarn.lock" }}
       - run:
-          name: install
+          name: install-dependencies
           command: yarn
       - run:
-          name: test
+          name: run-test
           command: yarn test
-      - run:
-          name: release
-          command: yarn semantic-release || true
       - save_cache:
           key: yarn-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
+      - run: echo "Test job done."
+  release:
+    docker:
+      - image: "circleci/node:12.6.0"
+    steps:
+      - checkout
+      - restore_cache:
+          key: yarn-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: install-dependencies
+          command: yarn
+      - run:
+          name: release
+          command: yarn semantic-release || true
+      - run: echo "Release job done."
+
+workflows:
+  version: 2
+  Test_and_release:
+    jobs:
+      - test
+      - release
