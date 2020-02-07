@@ -1,0 +1,16 @@
+npm-debug*
+Dockerfile
+README.md
+docker-compose.yml
+src
+
+.nuxt
+.DS_Store
+.bowerrc
+.dockerignore
+.git
+.env
+.gitignore
+
+.eslintrc.js
+.editorconfig
