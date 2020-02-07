@@ -2,12 +2,21 @@ version: 2
 jobs:
   build:
     docker:
-      - image: 'circleci/node:latest'
+      - image: "circleci/node:12.6.0"
     steps:
       - checkout
+      - restore_cache:
+          key: yarn-cache-{{ checksum "yarn.lock" }}
       - run:
           name: install
           command: yarn
       - run:
+          name: test
+          command: yarn test
+      - run:
           name: release
           command: yarn semantic-release || true
+      - save_cache:
+          key: yarn-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
