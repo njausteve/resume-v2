@@ -10,6 +10,7 @@ jobs:
   install-dependencies:
     executor: node-environment
     steps:
+      - checkout
       - restore_cache:
           keys:
             - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
@@ -26,7 +27,7 @@ jobs:
       - persist_to_workspace:
           root: workspace
           paths:
-            - .
+            - ./*
   test:
     executor: node-environment
     steps:
