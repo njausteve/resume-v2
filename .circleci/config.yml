@@ -4,7 +4,7 @@ executors:
   node-environment:
     docker:
       - image: "circleci/node:12.6.0"
-    working_directory: /tmp
+    # working_directory: /tmp
 
 jobs:
   install-dependencies:
@@ -32,7 +32,7 @@ jobs:
     executor: node-environment
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: /workspace
       - run:
           name: run-test
           command: yarn test
@@ -41,7 +41,7 @@ jobs:
     executor: node-environment
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: /workspace
       - run:
           name: release
           command: yarn semantic-release || true
