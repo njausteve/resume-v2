@@ -1,22 +1,62 @@
-version: 2
-jobs:
-  build:
+version: 2.1
+
+references:
+  workspace_root: &workspace_root ~/project
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: *workspace_root
+
+executors:
+  node-environment:
     docker:
       - image: "circleci/node:12.6.0"
+    working_directory: ~/project
+
+jobs:
+  install-dependencies:
+    executor: node-environment
     steps:
       - checkout
       - restore_cache:
-          key: yarn-cache-{{ checksum "yarn.lock" }}
+          keys:
+            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v1-{{ .Branch }}-
+            - yarn-packages-v1-
       - run:
-          name: install
+          name: install-dependencies
           command: yarn
+      - save_cache:
+          paths:
+            - ~/.cache/yarn
+          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - .
+  test:
+    executor: node-environment
+    steps:
+      - *attach_workspace
       - run:
-          name: test
+          name: run-test
           command: yarn test
+
+  release:
+    executor: node-environment
+    steps:
+      - *attach_workspace
       - run:
           name: release
           command: yarn semantic-release || true
-      - save_cache:
-          key: yarn-cache-{{ checksum "yarn.lock" }}
-          paths:
-            - ./node_modules
+
+workflows:
+  version: 2
+  Test_and_release:
+    jobs:
+      - install-dependencies
+      - test:
+          requires:
+            - install-dependencies
+      - release:
+          requires:
+            - install-dependencies
