@@ -14,5 +14,5 @@ module.exports = {
     '<rootDir>/components/**/*.vue',
     '<rootDir>/pages/**/*.vue'
   ],
-  'coverageDirectory': '<rootDir>/coverage'
+  'coverageDirectory': '<rootDir>/coverage/'
 }

@@ -44,7 +44,7 @@ jobs:
           name: run-test
           command: yarn test
       - codecov/upload:
-          file: ~/project/coverage/coverage-final.json
+          file: coverage/*.json
 
   release:
     executor: node-environment
