@@ -1,5 +1,11 @@
 version: 2.1
 
+references:
+  workspace_root: &workspace_root /tmp/workspace
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: *workspace_root
+
 executors:
   node-environment:
     docker:
@@ -30,8 +36,7 @@ jobs:
   test:
     executor: node-environment
     steps:
-      - attach_workspace:
-          at: ~/project
+      - *attach_workspace
       - run:
           name: run-test
           command: yarn test
@@ -39,8 +44,7 @@ jobs:
   release:
     executor: node-environment
     steps:
-      - attach_workspace:
-          at: ~/project
+      - *attach_workspace
       - run:
           name: release
           command: yarn semantic-release || true
