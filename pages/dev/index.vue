@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  layout: 'coming_soon'
+
 }
 </script>
 
