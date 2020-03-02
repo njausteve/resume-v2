@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: njausteve-com
+  name: njausteve-com
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: njausteve-com
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: njausteve-com
+    spec:
+      containers:
+      - image: gcr.io/njaustevecom/njautevecom-2f235cd
+        imagePullPolicy: Always
+        name: njausteve-com
+        ports:
+        - containerPort: 3000
+          protocol: TCP

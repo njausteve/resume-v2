@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: njausteve-com
+  name: njausteve-com
+  selfLink: /api/v1/namespaces/default/services/njausteve-com
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    run: njausteve-com
+  sessionAffinity: None
+  type: NodePort
