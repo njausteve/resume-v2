@@ -9,8 +9,8 @@ import { Power2, TimelineMax, TweenMax } from 'gsap'
 */
 
 const initSketch = ({ mountContainerSelector, imagePath, starsColor, backgroundColor }) => {
-  const P5 = require('P5')
   const container = document.querySelector(mountContainerSelector)
+  const P5 = require('p5')
 
   let containerWidth = getContainerWidth(container)
   let containerHeight = getContainerHeight(container)
