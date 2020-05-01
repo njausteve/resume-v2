@@ -12,7 +12,8 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "test": "jest",
     "semantic-release": "semantic-release",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "precommit": "npm run lint"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
@@ -38,6 +39,8 @@
     "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.1.0",
     "eslint-plugin-nuxt": ">=0.4.2",
+    "gsap": "^3.2.2",
+    "husky": "^4.2.5",
     "jest": "^24.1.0",
     "nodemon": "^1.18.9",
     "postcss-ordered-values": "^4.1.2",
