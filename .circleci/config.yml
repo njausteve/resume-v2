@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   codecov: codecov/codecov@1.0.5
+  gcp-gcr: circleci/gcp-gcr@0.7.1
 
 references:
   workspace_root: &workspace_root ~/project
@@ -54,6 +55,24 @@ jobs:
           name: release
           command: yarn semantic-release || true
 
+  build-and-push:
+    executor: gcp-gcr/default
+    steps:
+      - *attach_workspace
+      - gcp-gcr/gcr-auth
+      - gcp-gcr/build-image:
+          image: njausteve-resume-v2
+          registry-url: gcr.io
+          tag: gcr.io/${GOOGLE_PROJECT_ID}/njausteve-resume-v2:$CIRCLE_SHA1
+      - gcp-gcr/push-image:
+          digest-path: /tmp/digest.txt
+          image: njausteve-resume-v2
+          registry-url: gcr.io
+          tag: gcr.io/${GOOGLE_PROJECT_ID}/njausteve-resume-v2:$CIRCLE_SHA1
+      - run:
+          command: |
+            echo "Digest is: $(</tmp/digest.txt)"
+
 workflows:
   version: 2
   Test_and_release:
@@ -65,3 +84,6 @@ workflows:
       - release:
           requires:
             - install-dependencies
+      - build-and-push:
+           requires:
+             - test
