@@ -2,7 +2,7 @@ version: "3"
 services:
   resume_v2:
     container_name: njausteve.com
-    image: njausteve/njausteve.com
+    image: njausteve-resume-v2
     restart: always
     build: .
     ports:
