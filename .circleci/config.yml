@@ -63,12 +63,12 @@ jobs:
       - gcp-gcr/build-image:
           image: njausteve-resume-v2
           registry-url: gcr.io
-          tag: gcr.io/${GOOGLE_PROJECT_ID}/njausteve-resume-v2:$CIRCLE_SHA1
+          tag: $CIRCLE_SHA1
       - gcp-gcr/push-image:
           digest-path: /tmp/digest.txt
           image: njausteve-resume-v2
           registry-url: gcr.io
-          tag: gcr.io/${GOOGLE_PROJECT_ID}/njausteve-resume-v2:$CIRCLE_SHA1
+          tag: $CIRCLE_SHA1
       - run:
           command: |
             echo "Digest is: $(</tmp/digest.txt)"
