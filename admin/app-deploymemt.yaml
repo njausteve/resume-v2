@@ -19,7 +19,7 @@ spec:
         run: njausteve-com
     spec:
       containers:
-      - image: gcr.io/njaustevecom/njautevecom-2f235cd
+      - image: gcr.io/njaustevecom/njausteve-resume-v2
         imagePullPolicy: Always
         name: njausteve-com
         ports:

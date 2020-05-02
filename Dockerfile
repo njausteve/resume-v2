@@ -12,6 +12,9 @@ RUN apk add git
 COPY . /usr/src/resume-v2/
 RUN yarn
 
+# run node-sass rebuild
+RUN npm rebuild node-sass
+
 # build necessary, even if no static files are needed,
 # since it builds the server as well
 RUN yarn build
