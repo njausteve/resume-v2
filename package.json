@@ -13,7 +13,8 @@
     "test": "jest",
     "semantic-release": "semantic-release",
     "commit": "git-cz",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "postinstall": "npm rebuild node-sass"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
