@@ -33,6 +33,9 @@ jobs:
           paths:
             - ~/.cache/yarn
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run:
+          name: rebuild node-sass
+          command: npm rebuild node-sass
       - persist_to_workspace:
           root: *workspace_root
           paths:
