@@ -59,7 +59,8 @@ jobs:
     executor: gcp-gcr/default
     steps:
       - *attach_workspace
-      - gcp-gcr/gcr-auth
+      - gcp-gcr/gcr-auth:
+          gcloud-service-key: $GCLOUD_SERVICE_KEY | base64 --decode
       - gcp-gcr/build-image:
           image: njausteve-resume-v2
           registry-url: gcr.io
