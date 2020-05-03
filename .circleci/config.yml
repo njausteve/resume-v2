@@ -82,6 +82,9 @@ jobs:
     executor: gcp-gke/default
     steps:
       - gcp-gke/install
+      - gcp-gke/update-kubeconfig-with-credentials:
+          cluster: $GKE_CLUSTER
+          perform-login: true
       - gcp-gke/rollout-image:
           cluster: $GKE_CLUSTER
           deployment: njausteve-com
