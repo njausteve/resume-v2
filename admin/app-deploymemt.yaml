@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: njausteve-com
+  name: njausteve-com
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: njausteve-com
+  template:
+    metadata:
+      labels:
+        run: njausteve-com
+    spec:
+      containers:
+      - image: gcr.io/njaustevecom/njausteve-resume-v2@sha256:b123253b93f645f4416117098c41891fc513d5020959134ccbd772a42b1bd97b
+        imagePullPolicy: Always
+        name: njausteve-com
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+             path: /dev
+             port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          successThreshold: 1
