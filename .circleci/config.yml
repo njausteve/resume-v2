@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.5
   gcp-gcr: circleci/gcp-gcr@0.7.1
+  gcp-gke: circleci/gcp-gke@1.0.4
 
 references:
   workspace_root: &workspace_root ~/project
@@ -39,6 +40,7 @@ jobs:
           paths:
             - .
   test:
+    description: Test app, generate code coverage repost and upload to codecov
     executor: node-environment
     steps:
       - *attach_workspace
@@ -49,6 +51,7 @@ jobs:
           file: coverage/*.json
 
   release:
+    description: Analayse commits, release and update github tags and update app version
     executor: node-environment
     steps:
       - *attach_workspace
@@ -57,22 +60,34 @@ jobs:
           command: yarn semantic-release || true
 
   build-and-push:
+    description: Build, tag and pusg docker imager to google cloud registry
     executor: gcp-gcr/default
     steps:
       - *attach_workspace
       - gcp-gcr/gcr-auth
       - gcp-gcr/build-image:
-          image: njausteve-resume-v2
+          image: $IMAGE_NAME
           registry-url: gcr.io
           tag: $CIRCLE_SHA1
       - gcp-gcr/push-image:
           digest-path: /tmp/digest.txt
-          image: njausteve-resume-v2
+          image: $IMAGE_NAME
           registry-url: gcr.io
           tag: $CIRCLE_SHA1
       - run:
           command: |
             echo "Digest is: $(</tmp/digest.txt)"
+  deploy:
+    description: Deploy application to Google Kubernetes Engine
+    executor: gcp-gke/default
+    steps:
+      - gcp-gke/install
+      - gcp-gke/rollout-image:
+          cluster: $GKE_CLUSTER
+          deployment: njausteve-com
+          container: njausteve-com
+          image: gcr.io/njaustevecom/$IMAGE_NAME
+          tag: $CIRCLE_SHA1
 
 workflows:
   version: 2
@@ -88,3 +103,6 @@ workflows:
       - build-and-push:
            requires:
              - test
+      - deploy:
+           requires:
+             - build-and-push
