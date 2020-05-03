@@ -19,12 +19,11 @@ spec:
       run: njausteve-com
   template:
     metadata:
-      creationTimestamp: null
       labels:
         run: njausteve-com
     spec:
       containers:
-      - image: gcr.io/njaustevecom/njausteve-resume-v2
+      - image: gcr.io/njaustevecom/njausteve-resume-v2@sha256:b123253b93f645f4416117098c41891fc513d5020959134ccbd772a42b1bd97b
         imagePullPolicy: Always
         name: njausteve-com
         ports:
@@ -32,8 +31,8 @@ spec:
           protocol: TCP
         readinessProbe:
           httpGet:
-             path: /
+             path: /dev
              port: 3000
-          initialDelaySeconds: 5
+          initialDelaySeconds: 10
           periodSeconds: 5
           successThreshold: 1

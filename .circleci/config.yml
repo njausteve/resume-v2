@@ -106,6 +106,9 @@ workflows:
       - build-and-push:
            requires:
              - release
+           filters:
+            branches:
+              only: master
       - deploy:
            requires:
              - build-and-push
