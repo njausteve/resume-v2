@@ -12,8 +12,7 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "test": "jest",
     "semantic-release": "semantic-release",
-    "commit": "git-cz",
-    "precommit": "npm run lint"
+    "commit": "git-cz"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
