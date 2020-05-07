@@ -32,7 +32,7 @@
             >
               <span class="btn-text">
                 <span>
-                  Notify Me
+                  Notify Me!
                 </span>
               </span>
             </button>
