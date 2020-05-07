@@ -12,6 +12,7 @@
           <h2>
             <span>Something Big is Coming. We are Launching soon!</span>
           </h2>
+          <p>Be the first to know when we launch</p>
           <div class="elevenstyle__NotifyButton-sc-1ymt0wl-7 cjwvqY">
             <div v-show="showEmailInput" class="ftsYsS field-wrapper">
               <input
@@ -30,7 +31,9 @@
               class="buttonstyle__ButtonStyle-rnuphx-0 ggHLFe reusecore__button"
             >
               <span class="btn-text">
-                <span>Notify Me</span>
+                <span>
+                  Notify Me
+                </span>
               </span>
             </button>
           </div>
