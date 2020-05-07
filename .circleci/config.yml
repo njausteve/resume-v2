@@ -57,7 +57,7 @@ jobs:
       - *attach_workspace
       - run:
           name: release
-          command: yarn semantic-release
+          command: yarn semantic-release || true
 
   build-and-push:
     description: Build, tag and pusg docker imager to google cloud registry
@@ -103,6 +103,9 @@ workflows:
       - release:
           requires:
             - test
+          filters:
+            branches:
+              only: master
       - build-and-push:
            requires:
              - release
