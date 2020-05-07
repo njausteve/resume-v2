@@ -9,16 +9,12 @@
         "releaseRules": [
           { breaking: true, release: 'major' },
           { revert: true, release: 'patch' },
-          // MINOR
           { type: 'feat', release: 'minor' },
-          // PATCH
           { type: 'fix', release: 'patch' },
           { type: 'perf', release: 'patch' },
           { type: 'revert', release: 'patch' },
           { type: 'style', release: 'patch' },
           { type: 'improvement', release: 'patch' },
-
-          // NO RELEASE
           { type: 'ci', release: false },
           { type: 'docs', release: false },
           { type: 'build', release: false },
