@@ -62,6 +62,15 @@ module.exports = {
     ]
   },
   /*
+  ** Tailwind css configuration
+  ** See https://github.com/nuxt-community/style-resources-module
+  */
+  tailwindcss: {
+    configPath: '~/config/tailwind.config.js',
+    cssPath: '~/assets/css/tailwind.css',
+    exposeConfig: true
+  },
+  /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
@@ -74,7 +83,6 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-
     extend (config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
@@ -89,7 +97,17 @@ module.exports = {
     postcss: {
       plugins: {
         'postcss-pxtorem': {},
-        'postcss-ordered-values': {}
+        'postcss-ordered-values': {},
+        'postcss-url': false,
+        'postcss-nested': {},
+        'postcss-responsive-type': {},
+        'postcss-hexrgba': {}
+      },
+      preset: {
+        // Change the postcss-preset-env settings
+        autoprefixer: {
+          grid: false
+        }
       }
     }
   }

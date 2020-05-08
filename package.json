@@ -34,6 +34,7 @@
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@vue/test-utils": "^1.0.0-beta.27",
+    "autoprefixer": "^9.7.6",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
     "commitizen": "^4.0.3",
@@ -45,8 +46,13 @@
     "husky": "^4.2.5",
     "jest": "^24.1.0",
     "nodemon": "^1.18.9",
+    "postcss-cli": "^7.1.1",
+    "postcss-hexrgba": "^2.0.0",
+    "postcss-nested": "^4.2.1",
     "postcss-ordered-values": "^4.1.2",
     "postcss-pxtorem": "^4.0.1",
+    "postcss-responsive-type": "^1.0.0",
+    "postcss-url": "^8.0.0",
     "vue-jest": "^4.0.0-0"
   },
   "repository": {
