@@ -20,11 +20,7 @@
     "@nuxtjs/style-resources": "^1.0.0",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
-    "gsap": "^3.2.2",
-    "node-sass": "^4.13.0",
     "nuxt": "^2.0.0",
-    "p5": "^1.0.0",
-    "sass-loader": "^8.0.0",
     "semantic-release": "^16.0.4"
   },
   "devDependencies": {
@@ -42,9 +38,9 @@
     "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.1.0",
     "eslint-plugin-nuxt": ">=0.4.2",
-    "gsap": "^3.2.2",
     "husky": "^4.2.5",
     "jest": "^24.1.0",
+    "node-sass": "^4.14.1",
     "nodemon": "^1.18.9",
     "postcss-cli": "^7.1.1",
     "postcss-hexrgba": "^2.0.0",
@@ -53,6 +49,7 @@
     "postcss-pxtorem": "^4.0.1",
     "postcss-responsive-type": "^1.0.0",
     "postcss-url": "^8.0.0",
+    "sass-loader": "^8.0.2",
     "vue-jest": "^4.0.0-0"
   },
   "repository": {
