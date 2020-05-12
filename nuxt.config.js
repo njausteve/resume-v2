@@ -13,6 +13,12 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Girassol&display=swap' }
+    ],
+    script: [
+      {
+        async: 'async',
+        src: 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js'
+      }
     ]
   },
   /*
@@ -23,13 +29,12 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    // SCSS file in the project
-    '@/assets/css/sass/main.scss'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/particles.js', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -56,10 +61,16 @@ module.exports = {
   */
   styleResources: {
     // your settings here
-    scss: [
-      './assets/css/sass/abstracts/_variable.scss',
-      './assets/css/sass/abstracts/_mixins.scss'
-    ]
+    scss: []
+  },
+  /*
+  ** Tailwind css configuration
+  ** See https://github.com/nuxt-community/style-resources-module
+  */
+  tailwindcss: {
+    configPath: '~/config/tailwind.config.js',
+    cssPath: '~/assets/css/tailwind.css',
+    exposeConfig: true
   },
   /*
   ** Axios module configuration
@@ -74,7 +85,7 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-
+    vendor: ['particles.js'],
     extend (config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
@@ -89,7 +100,17 @@ module.exports = {
     postcss: {
       plugins: {
         'postcss-pxtorem': {},
-        'postcss-ordered-values': {}
+        'postcss-ordered-values': {},
+        'postcss-url': false,
+        'postcss-nested': {},
+        'postcss-responsive-type': {},
+        'postcss-hexrgba': {}
+      },
+      preset: {
+        // Change the postcss-preset-env settings
+        autoprefixer: {
+          grid: false
+        }
       }
     }
   }

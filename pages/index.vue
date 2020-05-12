@@ -1,7 +1,3 @@
-<template>
-  <div class="" />
-</template>
-
 <script>
 export default {
   layout: 'coming_soon'
