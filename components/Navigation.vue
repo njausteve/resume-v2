@@ -3,7 +3,7 @@
     class="bg-white flex flex-wrap items-center px-4 xs:px-6 lg:px-16 py-4 lg:py-6 sm:max-w-screen-sm lg:max-w-screen-lg xl:max-w-screen-xl mx-auto"
   >
     <div class="flex-1 flex justify-between items-center">
-      <a href="#" class="text-lg font-mont font-semibold outline-none">Stephen Njau</a>
+      <a href="#" class="text-lg font-mont font-semibold outline-none logo">Stephen Njau</a>
     </div>
     <div
       @click="isOpen = !isOpen"

@@ -15,8 +15,7 @@
             <span
               class="inline-block w-4 align-middle bg-black mr-2"
               style="height: 0.125em"
-            />
-            This website is under construction
+            />This website is under construction
           </p>
           <h2
             class="headline font-sans font-bold leading-tight text-3xl xs:text-4xl md:text-5xl lg:text-6xl mb-12 mt-5"
